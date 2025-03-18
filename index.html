@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Viewer</title>
+    <link rel="stylesheet" href="style.css" >
+    <!-- For Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h2>View Website in Desktop, Mobile, Tablet or Any size </h2>
+    <input id="urlInput" placeholder="Enter URL here">
+    <br>
+    <button onclick="viewWebsite('desktop')"><i class="fa-solid fa-desktop"></i> Desktop Mode</button>
+    <button onclick="viewWebsite('tablet')"><i class="fa-solid fa-tablet-screen-button"></i> Tablet Mode</button>
+    <button onclick="viewWebsite('mobile')"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Mode</button>
+     <button id="windowBtn"><i class="fa-solid fa-sliders"></i> Adjust</button>
+
+    <!-- Adjust Window -->
+    <div id="adjusWindow" class="window-modal">
+        <div class="window-header">
+            <span>Adjust The screen Size</span>
+            <button id="closewindow">&times;</button>
+        </div>
+        <div class="window-content">
+            <label for="hightinput" >Height</label>
+            <input type="number" id="hightinput"   >
+            <label for="weightinput" >Weight</label>
+            <input type="number" id="weightinput">
+            <button id="submit-handg"onclick="viewWebsite('handg')"  >Apply</button>
+        </div>
+    </div>
+
+    <p>see Your site</p>
+    <br>
+    <iframe id="webFrame"></iframe>
+    
+    <!--Background -->
+    
+    
+    
+ <script src="main.js">main.js</script>
+
+</body>
+</html>
