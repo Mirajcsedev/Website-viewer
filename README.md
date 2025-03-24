@@ -1,2 +1,2 @@
 view any Website at any size.
-Try Your safe "webresizer.rf.gd"
+Try Your safe "https://webresizer.rf.gd"
