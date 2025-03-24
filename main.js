@@ -25,8 +25,7 @@ function viewWebsite(mode) {
       frame.style.height = height + 'px'; // Corrected variable usage
     }
   } else {
-    alert('Please enter a valid URL.');
-  }
+    showToast(' Please enter a valid URL.');
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,3 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
     uploadWindow.style.display = "none";
   });
 });
+
+function showToast(message) {
+    let toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<div class="icon">⚠️</div>
+                       <div class="text">${message}</div>
+                       <button class="close-btn" onclick="this.parentElement.style.display='none'">✖</button>`;
+    
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.animation = "fadeOut 0.5s ease-in-out";
+        setTimeout(() => toast.remove(), 500);
+    }, 5000);
+}
