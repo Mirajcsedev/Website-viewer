@@ -21,11 +21,27 @@ function viewWebsite(mode) {
       frame.style.width = '375px';
       frame.style.height = '667px';
     } else if (mode === 'handg') {
-      frame.style.width = width + 'px'; // Corrected variable usage
-      frame.style.height = height + 'px'; // Corrected variable usage
+      frame.style.width = width + 'px';
+      frame.style.height = height + 'px';
     }
   } else {
-    showToast(' Please enter a valid URL.');
+    showToast('Please enter a valid URL.');
+  }
+}
+
+function showToast(message) {
+  let toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<div class="icon">⚠️</div>
+                     <div class="text">${message}</div>
+                     <button class="close-btn" onclick="this.parentElement.style.display='none'">✖</button>`;
+  
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.animation = "fadeOut 0.5s ease-in-out";
+    setTimeout(() => toast.remove(), 500);
+  }, 5000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -33,28 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const uploadWindow = document.getElementById("adjusWindow");
   const closeUpload = document.getElementById("closewindow");
   
-  // Show Upload Window
+  // Show Adjust Window
   uploadBtn.addEventListener("click", () => {
     uploadWindow.style.display = "block";
   });
   
-  // Close Upload Window
+  // Close Adjust Window
   closeUpload.addEventListener("click", () => {
     uploadWindow.style.display = "none";
   });
 });
 
-function showToast(message) {
-    let toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `<div class="icon">⚠️</div>
-                       <div class="text">${message}</div>
-                       <button class="close-btn" onclick="this.parentElement.style.display='none'">✖</button>`;
+// New function to paste clipboard text into the URL input field
+async function pasteUrl() {
+  try {
+    const clipboardText = await navigator.clipboard.readText();
+    document.getElementById("urlInput").value = clipboardText;
+  }
+  catch (err) {
     
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.style.animation = "fadeOut 0.5s ease-in-out";
-        setTimeout(() => toast.remove(), 500);
-    }, 5000);
+    showToast("Failed to read clipboard contents: " + err);
+  }
 }
